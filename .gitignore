@@ -25,3 +25,7 @@ yarn-error.log*
 # django
 */env
 /mediafiles
+
+# data helper
+helper_scripts/output.json
+helper_scripts/input.csv
