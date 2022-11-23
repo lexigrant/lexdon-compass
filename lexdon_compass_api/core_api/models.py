@@ -24,3 +24,6 @@ class Core(models.Model):
     link = models.CharField(max_length=200)
     notes = models.CharField(max_length=1000)
     image_url = models.ImageField(upload_to=upload_to, blank=True, null=True)
+    latitude = models.DecimalField(max_digits=30, decimal_places=15, null=True)
+    longitude = models.DecimalField(max_digits=30, decimal_places=15, null=True)
+
