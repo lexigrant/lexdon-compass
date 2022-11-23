@@ -18,6 +18,8 @@ export type ListingData = {
   tt_airport: number;
   link: string;
   notes: string;
+  latitude: number;
+  longitude: number;
 };
 
 type ListingProps = {

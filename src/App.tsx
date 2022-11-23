@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Listing, { ListingData } from "./components/Listing";
+import Map from "./components/Map";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -50,8 +51,8 @@ useEffect(() => {
           backgroundColor: "lightblue",
         }}
       >
-        <div style={{ flex: 1, alignSelf: "center" }}>
-          <p>TODO: map 🌎</p>
+        <div style={{ flex: 1, width:"100%", height:"100%",alignSelf: "center" }}>
+          <Map apartmentListings={listings}/>
         </div>
         <div style={{ flex: 1, overflowY: "scroll" }}>
           {listings.map((listingData) => (
