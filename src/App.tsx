@@ -1,21 +1,39 @@
+import { useState, useEffect } from "react";
 import "./App.css";
+import axios from "axios";
 import Listing, { ListingData } from "./components/Listing";
 
-const App = () => {
-  // TODO: delete when api gets hooked up
-  function getTestData(repeat = 5): ListingData[] {
-    const testData = {
-      name: "test",
-      address: "123 Blueberry Lane",
-      timeToCostco: 12,
-    };
+const API_URL = process.env.REACT_APP_API_URL
 
-    let testDataArr: ListingData[] = [];
-    for (let i = 0; i < repeat; i++) {
-      testDataArr.push({ ...testData, id: 1 });
-    }
-    return testDataArr;
-  }
+const App = () => {
+
+const [listings, setListings] = useState<ListingData[]>([])
+
+const refetch = () => {
+  axios.get(`${API_URL}/api/core`)
+  .then((response) => {
+    setListings(response.data)
+  })
+}
+const post = () => {
+  axios.post(`${API_URL}/api/core`)
+  .then(()=> {
+    refetch()
+  })
+}
+const handleUpdate = (editListing: ListingData) => {
+axios.put(`${API_URL}/api/core/${editListing.id}`)
+.then(()=> {
+  refetch()
+})
+}
+
+
+useEffect(() => {
+  refetch()
+}, [])
+
+
 
   return (
     <div className="App">
@@ -36,7 +54,7 @@ const App = () => {
           <p>TODO: map 🌎</p>
         </div>
         <div style={{ flex: 1, overflowY: "scroll" }}>
-          {getTestData().map((listingData) => (
+          {listings.map((listingData) => (
             <Listing listingData={listingData}></Listing>
           ))}
         </div>

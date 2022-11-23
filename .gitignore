@@ -29,3 +29,4 @@ yarn-error.log*
 # data helper
 helper_scripts/output.json
 helper_scripts/input.csv
+.env
