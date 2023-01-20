@@ -39,6 +39,10 @@
   }
 }
 
+.noBullet {
+  list-style: none;
+}
+
 .search-bar {
   position: relative;
   top: -17px
