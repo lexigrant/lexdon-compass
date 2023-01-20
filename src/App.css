@@ -38,3 +38,11 @@
     transform: rotate(360deg);
   }
 }
+
+.search-bar {
+  position: relative;
+  top: -17px
+}
+.noListings {
+  font-size: 40px;
+}
