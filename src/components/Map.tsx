@@ -12,13 +12,13 @@ type LocationPinProps = {
 }
 
 
-const DENVER = {lat: 39.7392 , lng: -104.9903 }
+const DENVER = { lat: 39.7392, lng: -104.9903 }
 
 const LocationPin = (props: LocationPinProps) => {
 
     return (
         <div>
-           <svg
+            <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -45,35 +45,33 @@ const LocationPin = (props: LocationPinProps) => {
 const Map = (props: MapProps) => {
 
     const location = {
-        center: {lat: (DENVER.lat), lng: (DENVER.lng)},
+        center: { lat: (DENVER.lat), lng: (DENVER.lng) } as GoogleMapReact.Coords,
         zoom: 10
     }
 
     const key = process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
     // Return Guard
-    if(key === undefined) {
+    if (key === undefined) {
         return <></>
     }
 
     return (
-        // <div style={{width: 100}}>
-            <GoogleMapReact
-                bootstrapURLKeys={{
-                    key: key,
-                    language: 'en'
-                }}
-                defaultCenter={location.center}
-                center={location.center}
-                defaultZoom={location.zoom}>
-                    {props.apartmentListings.map(apartmentListing => {
-                        return(
-                            <LocationPin lat={apartmentListing.latitude} lng={apartmentListing.longitude} />
-                        )
-                    })}
-                    
-                </GoogleMapReact>
-        // </div>
+        <GoogleMapReact
+            bootstrapURLKeys={{
+                key: key,
+                language: 'en'
+            }}
+            defaultCenter={location.center}
+            center={location.center}
+            defaultZoom={location.zoom}>
+            {props.apartmentListings.map(apartmentListing => {
+                return (
+                    <LocationPin lat={apartmentListing.latitude} lng={apartmentListing.longitude} />
+                )
+            })}
+
+        </GoogleMapReact>
     )
 }
 
